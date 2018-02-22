@@ -23,3 +23,7 @@
 "sendgrid_report_groups_day","Tag"
 "sendgrid_report_groups_week","Woche"
 "sendgrid_report_groups_month","Monat"
+"sendgrid_email","Email"
+"sendgrid_reason","Grund"
+"sendgrid_status","Status"
+"sendgrid_created","Erstellt am"

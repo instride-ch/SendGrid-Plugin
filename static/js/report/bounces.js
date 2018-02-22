@@ -41,22 +41,22 @@ pimcore.plugin.sendgrid.report.bounces = Class.create(pimcore.plugin.sendgrid.re
                 store: this.getStore(),
                 columns: [
                     {
-                        text: t('email'),
+                        text: t('sendgrid_email'),
                         dataIndex: 'email',
                         width: 300
                     },
                     {
-                        text: t('reason'),
+                        text: t('sendgrid_reason'),
                         dataIndex: 'reason',
                         flex: 1
                     },
                     {
-                        text: t('status'),
+                        text: t('sendgrid_status'),
                         dataIndex: 'status',
                         width: 100
                     },
                     {
-                        text: t('created'),
+                        text: t('sendgrid_created'),
                         dataIndex: 'created',
                         width: 100
                     },

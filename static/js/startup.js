@@ -42,25 +42,28 @@ pimcore.plugin.sendgrid = Class.create(pimcore.plugin.admin, {
             reader: sitesReader
         });
 
-        sitesStore.load();
-        pimcore.globalmanager.add("sendgrid_sites", sitesStore);
+        sitesStore.load(function() {
+            if (this.getRange().length > 0) {
+                pimcore.report.broker.addGroup('sendgrid', 'sendgrid_reports', 'sendgrid_icon');
 
-        pimcore.report.broker.addGroup('sendgrid', 'sendgrid_reports', 'sendgrid_icon');
+                Ext.Object.each(pimcore.plugin.sendgrid.report, function (report) {
+                    if (report === 'abstract') {
+                        return true;
+                    }
 
-        Ext.Object.each(pimcore.plugin.sendgrid.report, function (report) {
-            if (report === 'abstract') {
-                return true;
+                    report = pimcore.plugin.sendgrid.report[report];
+
+                    pimcore.report.broker.addReport(report, 'sendgrid', {
+                        name: report.prototype.getName(),
+                        text: report.prototype.getName(),
+                        niceName: report.prototype.getName(),
+                        iconCls: report.prototype.getIconCls()
+                    });
+                });
             }
-
-            report = pimcore.plugin.sendgrid.report[report];
-
-            pimcore.report.broker.addReport(report, 'sendgrid', {
-                name: report.prototype.getName(),
-                text: report.prototype.getName(),
-                niceName: report.prototype.getName(),
-                iconCls: report.prototype.getIconCls()
-            });
         });
+
+        pimcore.globalmanager.add("sendgrid_sites", sitesStore);
     },
 
     postOpenDocument: function (tab, type) {

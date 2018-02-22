@@ -55,6 +55,13 @@ class SendGrid_Admin_SettingsController extends \Pimcore\Controller\Action\Admin
         }
 
         foreach ($docIds as $siteId => $docId) {
+            $key = "APPLICATION.MULTISITE.$siteId.SMTP.ACTIVE";
+            $active = \SendGrid\Model\Configuration::get($key);
+
+            if (!$active) {
+                continue;
+            }
+
             $doc = \Pimcore\Model\Document::getById($docId);
 
             if ($doc instanceof \Pimcore\Model\Document && $doc->isAllowed("view")) {

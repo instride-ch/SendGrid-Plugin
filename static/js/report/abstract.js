@@ -87,7 +87,6 @@ pimcore.plugin.sendgrid.report.abstract = Class.create(pimcore.report.abstract, 
                 xtype: 'combo',
                 fieldLabel: t('site'),
                 typeAhead: true,
-                value: 0,
                 mode: 'local',
                 listWidth: 100,
                 store: pimcore.globalmanager.get('sendgrid_sites'),
@@ -99,7 +98,13 @@ pimcore.plugin.sendgrid.report.abstract = Class.create(pimcore.report.abstract, 
                 listeners: {
                     change: function () {
                         this.filter();
-                    }.bind(this)
+                    }.bind(this),
+                    render: function() {
+                        var store = pimcore.globalmanager.get('sendgrid_sites');
+                        if (store.getRange().length > 0) {
+                            this.setValue(store.getRange()[0].getId());
+                        }
+                    }
                 }
             }
         ];
@@ -141,7 +146,9 @@ pimcore.plugin.sendgrid.report.abstract = Class.create(pimcore.report.abstract, 
     },
 
     filter: function () {
-        this.getStore().load();
+        if (this.getSiteField().getValue()) {
+            this.getStore().load();
+        }
     },
 
     getFilterParams: function () {
