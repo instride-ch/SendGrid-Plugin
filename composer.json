@@ -1,0 +1,26 @@
+{
+    "name": "wvision/send-grid",
+    "type": "pimcore-plugin",
+    "description": "Pimcore Plugin of w-vision",
+    "homepage": "http://www.w-vision.ch",
+    "authors": [{
+        "name": "w-vision | Woche-Pass AG",
+        "email": "support@w-vision.ch",
+        "homepage": "http://www.w-vision.ch",
+        "role": "Web Development Agency"
+    },{
+        "name": "Dominik Pfaffenbauer",
+        "email": "dominik@pfaffenbauer.at",
+        "homepage": "http://www.pfaffenbauer.at",
+        "role": "Developer"
+    }],
+    "require": {
+        "pimcore/installer-plugin": ">=1",
+        "sendgrid/sendgrid": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SendGrid": "lib"
+        }
+    }
+}
