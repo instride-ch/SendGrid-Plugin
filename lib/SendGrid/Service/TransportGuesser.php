@@ -69,6 +69,8 @@ class TransportGuesser
                     ]
                 ];
 
+                \Pimcore::getEventManager()->trigger('sendgrid.transport_guessed', $mail, $sendGridData);
+
                 $objectParam = $mail->getParam('object');
 
                 if ($objectParam instanceof Model\Object\Concrete) {
