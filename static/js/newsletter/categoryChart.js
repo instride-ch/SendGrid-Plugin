@@ -8,10 +8,7 @@ pimcore.plugin.sendgrid.newsletter.categoryCharts = Class.create({
 
     getPanel: function () {
         if (!this.panel) {
-            var me = this;
-
             this.panel = Ext.create('Ext.panel.Panel', {
-                id: 'sendgrid_settings',
                 iconCls: 'sendgrid_icon',
                 border: false,
                 layout: 'fit',
