@@ -22,7 +22,7 @@ The Plugin sends additional Information to SendGrid using the SMTP API. This dat
 
  - SendGrid Category = DocumentId
  - Custom Args:
-      - Newsletter Class Name if applicable
+      - ['customArgs']['class']: Newsletter Class Name if applicable
 
 ## SendGrid Event Hook
 If configured, the plugin intercepts SendGrid Events and adds notes to the according Pimcore Class. The Plugin also triggers
