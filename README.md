@@ -29,5 +29,5 @@ If configured, the plugin intercepts SendGrid Events and adds notes to the accor
 an event which can be intercepted inside your application.
 
 Events:
-    - sendgrid.event: Generic Event which is fired each time sendgrid sends an event
-    - sendgri.%eventName%: Event for a specific send grid event like blocked our bounced [SendGrid Event API](https://sendgrid.com/docs/API_Reference/Webhooks/event.html#-Event-Types)
+ - sendgrid.event: Generic Event which is fired each time sendgrid sends an event
+ - sendgri.%eventName%: Event for a specific send grid event like blocked our bounced [SendGrid Event API](https://sendgrid.com/docs/API_Reference/Webhooks/event.html#-Event-Types)
