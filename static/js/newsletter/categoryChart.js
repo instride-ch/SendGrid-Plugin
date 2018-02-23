@@ -6,6 +6,22 @@ pimcore.plugin.sendgrid.newsletter.categoryCharts = Class.create({
         this.data = data;
     },
 
+    addPanel: function() {
+        Ext.Ajax.request({
+            url: '/plugin/SendGrid/admin_category/is-configured',
+            params: {
+                document: this.data.id
+            },
+            success: function (response) {
+                var data = Ext.decode(response.responseText);
+
+                if (data.success) {
+                    this.data.tabbar.add(this.getPanel());
+                }
+            }.bind(this),
+        });
+    },
+
     getPanel: function () {
         if (!this.panel) {
             this.panel = Ext.create('Ext.panel.Panel', {

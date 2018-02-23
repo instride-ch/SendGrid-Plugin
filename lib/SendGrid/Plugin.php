@@ -23,7 +23,14 @@ class Plugin extends PluginLib\AbstractPlugin implements PluginLib\PluginInterfa
 
     public static function getSendGridApi($siteId)
     {
-        return new \SendGrid(Configuration::get("APPLICATION.MULTISITE." . $siteId . ".API_KEY"));
+        $apiKey = Configuration::get("APPLICATION.MULTISITE." . $siteId . ".API_KEY");
+        $activated = Configuration::get("APPLICATION.MULTISITE." . $siteId . ".SMTP.ACTIVE");
+
+        if ($apiKey && $activated) {
+            return new \SendGrid(Configuration::get("APPLICATION.MULTISITE." . $siteId . ".API_KEY"));
+        }
+
+        return false;
     }
 
     public static function install()

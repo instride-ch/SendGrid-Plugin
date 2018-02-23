@@ -70,7 +70,7 @@ pimcore.plugin.sendgrid = Class.create(pimcore.plugin.admin, {
         if (type === 'newsletter') {
             var statsTab = new pimcore.plugin.sendgrid.newsletter.categoryCharts(tab);
 
-            tab.tabbar.add(statsTab.getPanel());
+            statsTab.addPanel()
         }
     },
 });

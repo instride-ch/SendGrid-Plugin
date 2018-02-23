@@ -20,6 +20,7 @@
             <path>/plugins/SendGrid/static/js/report/abstract.js</path>
             <path>/plugins/SendGrid/static/js/report/bounces.js</path>
             <path>/plugins/SendGrid/static/js/report/blocks.js</path>
+            <path>/plugins/SendGrid/static/js/report/spam.js</path>
         </pluginJsPaths>
         <pluginCssPaths>
             <path>/plugins/SendGrid/static/css/plugin.css</path>

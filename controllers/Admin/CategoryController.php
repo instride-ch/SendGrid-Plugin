@@ -2,6 +2,29 @@
 
 class SendGrid_Admin_CategoryController extends \Pimcore\Controller\Action\Admin
 {
+    public function isConfiguredAction()
+    {
+        $documentId = $this->getParam('document');
+        $siteResolver = new \SendGrid\Document\SiteResolver();
+        $newsletterDocument = \Pimcore\Model\Document\Newsletter::getById($documentId);
+
+        if (!$newsletterDocument) {
+            $this->_helper->json(['success' => false]);
+            return;
+        }
+
+        $site = $siteResolver->getSiteForDocument($newsletterDocument);
+        $siteId = 0;
+
+        if ($site instanceof \Pimcore\Model\Site) {
+            $siteId = $site->getId();
+        }
+
+        $sg = \SendGrid\Plugin::getSendGridApi($siteId);
+
+        $this->_helper->json(['success' => $sg instanceof SendGrid]);
+    }
+
     public function statsAction()
     {
         $siteResolver = new \SendGrid\Document\SiteResolver();
